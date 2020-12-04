@@ -11,7 +11,7 @@ class COCOConverter(object):
         print(f'loading {icdar_label_file} ...')
         with open(icdar_label_file, 'r') as f:
             self.icdar = json.load(f)
-            print(self.icdar)
+            # print(self.icdar)
         print('icdar_label_file loaded')
 
         assert os.path.isdir(icdar_images_dir), f'dir \'{icdar_images_dir}\' not found!'
