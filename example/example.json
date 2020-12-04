@@ -1,0 +1,245 @@
+{
+  "gt_1726": [
+    {
+      "transcription": "\u71ce\u7533\u96c6\u56e2",
+      "points": [
+        [
+          141,
+          199
+        ],
+        [
+          237,
+          201
+        ],
+        [
+          313,
+          236
+        ],
+        [
+          357,
+          283
+        ],
+        [
+          359,
+          300
+        ],
+        [
+          309,
+          261
+        ],
+        [
+          233,
+          230
+        ],
+        [
+          140,
+          231
+        ]
+      ],
+      "language": "Chinese",
+      "illegibility": false
+    }
+  ],
+  "gt_3310": [
+    {
+      "transcription": "\u5458\u4f1a",
+      "points": [
+        [
+          25,
+          13
+        ],
+        [
+          57,
+          71
+        ],
+        [
+          26,
+          92
+        ],
+        [
+          0,
+          34
+        ]
+      ],
+      "language": "Chinese",
+      "illegibility": false
+    },
+    {
+      "transcription": "###",
+      "points": [
+        [
+          264,
+          21
+        ],
+        [
+          296,
+          0
+        ],
+        [
+          300,
+          9
+        ],
+        [
+          272,
+          31
+        ]
+      ],
+      "language": "Latin",
+      "illegibility": true
+    },
+    {
+      "transcription": "###",
+      "points": [
+        [
+          322,
+          0
+        ],
+        [
+          351,
+          25
+        ],
+        [
+          340,
+          31
+        ],
+        [
+          317,
+          9
+        ]
+      ],
+      "language": "Latin",
+      "illegibility": true
+    },
+    {
+      "transcription": "###",
+      "points": [
+        [
+          287,
+          71
+        ],
+        [
+          330,
+          69
+        ],
+        [
+          334,
+          83
+        ],
+        [
+          284,
+          82
+        ]
+      ],
+      "language": "Latin",
+      "illegibility": true
+    },
+    {
+      "transcription": "\u79d1\u666e\u6d3b\u52a8\u7ad9",
+      "points": [
+        [
+          191,
+          103
+        ],
+        [
+          419,
+          103
+        ],
+        [
+          420,
+          148
+        ],
+        [
+          191,
+          144
+        ]
+      ],
+      "language": "Chinese",
+      "illegibility": false
+    },
+    {
+      "transcription": "\u4fdd\u62a4",
+      "points": [
+        [
+          0,
+          305
+        ],
+        [
+          14,
+          299
+        ],
+        [
+          28,
+          318
+        ],
+        [
+          47,
+          340
+        ],
+        [
+          31,
+          355
+        ],
+        [
+          11,
+          351
+        ],
+        [
+          5,
+          338
+        ],
+        [
+          0,
+          329
+        ]
+      ],
+      "language": "Chinese",
+      "illegibility": false
+    },
+    {
+      "transcription": "\u5927\u56e2\u9547\u4e09\u58a9\u5c45\u59d4",
+      "points": [
+        [
+          178,
+          289
+        ],
+        [
+          432,
+          289
+        ],
+        [
+          431,
+          326
+        ],
+        [
+          177,
+          323
+        ]
+      ],
+      "language": "Chinese",
+      "illegibility": false
+    },
+    {
+      "transcription": "\u515a\u5efa\u670d\u52a1\u7ad9",
+      "points": [
+        [
+          212,
+          347
+        ],
+        [
+          395,
+          347
+        ],
+        [
+          396,
+          383
+        ],
+        [
+          213,
+          382
+        ]
+      ],
+      "language": "Chinese",
+      "illegibility": false
+    }
+  ]
+}
