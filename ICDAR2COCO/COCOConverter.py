@@ -25,13 +25,9 @@ class COCOConverter(object):
             "annotations": [],
             "categories": [
                 {
-                    "id": 0,
-                    "name": "background",
-                    "supercategory": "text"
-                }, {
                     "id": 1,
-                    "name": "foreground",
-                    "supercategory": "text"
+                    "name": "text",
+                    "supercategory": "foreground"
                 }
             ],
             "licenses": licenses
@@ -89,7 +85,7 @@ class COCOConverter(object):
                     self.add_annotation(ann_id,
                                         index,
                                         category_id=1,  # text regions are foregrounds
-                                        segmentation=segmentation,
+                                        segmentation=[segmentation],
                                         area=area,
                                         bbox=bbox,
                                         iscrowd=0)
