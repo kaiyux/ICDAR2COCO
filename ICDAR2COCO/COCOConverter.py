@@ -3,10 +3,12 @@ import json
 import os
 from shapely.geometry import Polygon
 from tqdm import tqdm
+from .utils import *
 
 
 class COCOConverter(object):
-    def __init__(self, icdar_label_file, icdar_images_dir, coco_label_file, info='icdar', licenses='none'):
+    def __init__(self, icdar_label_file, icdar_images_dir, coco_label_file, info='icdar', licenses='none',
+                 with_angle=False):
         assert os.path.isfile(icdar_label_file), f'file \'{icdar_label_file}\' not found!'
         print(f'loading {icdar_label_file} ...')
         with open(icdar_label_file, 'r') as f:
@@ -32,6 +34,8 @@ class COCOConverter(object):
             ],
             "licenses": licenses
         }
+
+        self.with_angle = with_angle
 
     def add_image(self, id, width, height, filename):
         image = {
@@ -64,20 +68,32 @@ class COCOConverter(object):
                     skip = False
 
                     segmentation = []
-                    xmin = float('inf')
-                    xmax = 0
-                    ymin = float('inf')
-                    ymax = 0
                     for point in ann["points"]:
-                        xmin = min(xmin, point[0])
-                        xmax = max(xmax, point[0])
-                        ymin = min(ymin, point[1])
-                        ymax = max(ymax, point[1])
                         segmentation.extend(point)
 
-                    width = xmax - xmin
-                    height = ymax - ymin
-                    bbox = [xmin, ymin, width, height]
+                    if self.with_angle:
+                        top_left = ann["points"][0]
+                        top_right = ann["points"][1]
+                        bottom_right = ann["points"][2]
+
+                        width = euc_distance(top_left, top_right)
+                        height = euc_distance(top_right, bottom_right)
+                        angle = azimuth_angle(top_left[0], top_left[1], top_right[0], top_right[1])
+                        bbox = [top_left[0], top_left[1], width, height, angle]
+                    else:
+                        xmin = float('inf')
+                        xmax = 0
+                        ymin = float('inf')
+                        ymax = 0
+                        for point in ann["points"]:
+                            xmin = min(xmin, point[0])
+                            xmax = max(xmax, point[0])
+                            ymin = min(ymin, point[1])
+                            ymax = max(ymax, point[1])
+
+                        width = xmax - xmin
+                        height = ymax - ymin
+                        bbox = [xmin, ymin, width, height]
 
                     poly = Polygon(ann["points"])
                     area = round(poly.area, 2)
