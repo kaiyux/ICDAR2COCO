@@ -5,7 +5,7 @@ import shutil
 
 
 class COCOSplit(object):
-    def __init__(self, images_dir, label_file, target_dir, train=8, test=1, val=1):
+    def __init__(self, images_dir, label_file, target_dir, train=8, test=1, val=1, ratio_mode=True):
         assert os.path.isfile(label_file), f'file \'{label_file}\' not found!'
         print(f'loading {label_file} ...')
         with open(label_file, 'r') as f:
@@ -36,10 +36,16 @@ class COCOSplit(object):
         print(self.val_label)
         self.target_dir = target_dir
 
-        num = train + test + val
-        self.train = train / num
-        self.test = test / num
-        self.val = val / num
+        self.ratio_mode = ratio_mode
+        if ratio_mode:
+            num = train + test + val
+            self.train = train / num
+            self.test = test / num
+            self.val = val / num
+        else:
+            self.train = train
+            self.test = test
+            self.val = val
 
     def get_images_dir(self, mode):
         dir_dict = {
@@ -50,10 +56,17 @@ class COCOSplit(object):
         return dir_dict[mode]
 
     def split(self):
-        num_images = len(self.coco['images'])
-        num_trainset = int(num_images * self.train)
-        num_testset = int(num_images * self.test)
-        num_valset = int(num_images * self.val)
+        if self.ratio_mode:
+            num_images = len(self.coco['images'])
+            num_trainset = int(num_images * self.train)
+            num_testset = int(num_images * self.test)
+            num_valset = int(num_images * self.val)
+        else:
+            num_images = self.train + self.test + self.val
+            num_trainset = self.train
+            num_testset = self.test
+            num_valset = self.val
+
         print(f'{num_images} images in label file')
         print(f'train set: {num_trainset}')
         print(f'test set: {num_testset}')
@@ -138,7 +151,4 @@ class COCOSplit(object):
                     json.dump(data, f)
                     print('val_label saved')
 
-                images = []
-                annotations = []
-                image_id = 0
-                ann_id = 0
+                return
